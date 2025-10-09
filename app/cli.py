@@ -11,7 +11,7 @@ Choose operation:
 4) x^b
 5) Exit
 """
-#prompt user 
+#prompt user for input
 def prompt():
     while True:
         print(MENU)
