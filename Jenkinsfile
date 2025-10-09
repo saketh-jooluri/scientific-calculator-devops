@@ -26,7 +26,7 @@ pipeline {
             steps {
                 // Runs the Python unit tests to ensure code quality
                 echo "Running unit tests..."
-                sh 'python -m unittest discover tests'
+                sh 'python3 -m unittest discover tests'
             }
         }
 
