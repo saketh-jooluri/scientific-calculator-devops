@@ -93,11 +93,8 @@ pipeline {
         }
         // This block runs regardless of the pipeline's success or failure
         always {
-            // Provide a node context for the sh command to run in
-            node {
-                echo "Cleaning up..."
-                sh "docker logout"
-            }
+            echo "Cleaning up..."
+            sh "docker logout"
         }
     }
 }
