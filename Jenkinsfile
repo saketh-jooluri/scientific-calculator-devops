@@ -7,7 +7,7 @@ pipeline {
     // Environment variables used throughout the pipeline
     environment {
         // The ID of the Docker Hub credentials stored in Jenkins
-        DOCKERHUB_CREDENTIALS = credentials('YOUR_DOCKERHUB_CREDENTIALS_ID')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
         // Your Docker Hub username and the desired image name
         DOCKER_IMAGE_NAME = "sakethjooluri/scientific-calculator-devops"
     }
@@ -19,7 +19,7 @@ pipeline {
                 // This step is triggered by the webhook from GitHub
                 // It checks out the latest code from your main branch
                 echo "Pulling latest code from GitHub..."
-                git 'YOUR_GITHUB_REPO_URL'
+                git 'https://github.com/saketh-jooluri/scientific-calculator-devops.git'
             }
         }
 
@@ -93,9 +93,11 @@ pipeline {
         }
         // This block runs regardless of the pipeline's success or failure
         always {
-            // Clean up by logging out of Docker Hub to remove credentials from the agent
-            echo "Cleaning up..."
-            sh "docker logout"
+            // Provide a node context for the sh command to run in
+            node {
+                echo "Cleaning up..."
+                sh "docker logout"
+            }
         }
     }
 }
