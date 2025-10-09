@@ -1,20 +1,19 @@
-#  Dockerfile for Scientific Calculator
+# Dockerfile
 
-# Use lightweight Python base image
-FROM python:3.12-slim
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-# Set working directory inside container
-WORKDIR /app
+# Set the working directory in the container
+WORKDIR /code
 
-# Copy all project files into container
-COPY . /app
+# Copy the local directory contents into the container at /code
+# This will copy the 'app' and 'tests' folders
+COPY . .
 
-# Upgrade pip and install dependencies if any
-RUN python -m pip install --upgrade pip && \
-    if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+# --- Optional: If you had a requirements.txt file, you would install it here ---
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
 
-# Run unit tests during build (optional but good for CI)
-RUN python -m unittest discover -v -s tests || true
-
-# Default command — run the CLI calculator
+# Run the command-line interface (cli.py) as a module within the 'app' package
+# This is the correct way to run a file inside a Python package.
 CMD ["python", "-m", "app.cli"]
