@@ -16,3 +16,5 @@
         restart_policy: always
         ports:
           - "5000:5000"
+        interactive: yes  
+        tty: yes   
