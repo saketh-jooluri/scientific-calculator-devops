@@ -14,12 +14,11 @@ pipeline {
 
     // The main stages of the CI/CD pipeline
     stages {
-        stage('1. Pull GitHub Repo') {
+        stage('1. Checkout Code') {
             steps {
-                // This step is triggered by the webhook from GitHub
-                // It checks out the latest code from your main branch
-                echo "Pulling latest code from GitHub..."
-                git 'https://github.com/saketh-jooluri/scientific-calculator-devops.git'
+                // The code is already checked out automatically by Jenkins.
+                // This stage now just confirms that step is complete.
+                echo "Source code checked out successfully."
             }
         }
 
