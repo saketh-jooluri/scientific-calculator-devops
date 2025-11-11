@@ -29,4 +29,3 @@ def power(x: Number, b: Number) -> float:
     # allow non-integer exponent
     return math.pow(x, b)
 
-#change
