@@ -1,4 +1,4 @@
-# app/calculator.py
+#app/calculator.py 
 import math
 from typing import Union
 
@@ -28,3 +28,5 @@ def ln(x: Number) -> float:
 def power(x: Number, b: Number) -> float:
     # allow non-integer exponent
     return math.pow(x, b)
+
+#change
